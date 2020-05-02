@@ -2,10 +2,10 @@ class Post < ActiveRecord::Base
   
   
   validates :title, presence: true
-  validates :content, :length { minimum: 250 }
-  validates :summary, :length { maximum: 250 }
-  validates :category, inclusion: { in: %w(fiction nonfiction)}
-  validates :clickbait_title
+  validates :content, length: { minimum: 250 }
+  validates :summary, length: { maximum: 250 }
+  validates :category, inclusion: { in: %w(Fiction Non-Fiction) }
+  validate :clickbait_title?
   
   CLICKBAIT_WORDS = [
     /Won't Believe/i,
