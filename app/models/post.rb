@@ -9,7 +9,12 @@ class Post < ActiveRecord::Base
   
   validates :clickbait_title
   
-  
+  CLICKBAIT_WORDS = [
+    /Won't Believe/i,
+    /Secret/i,
+    /Top [0-9]*/i,
+    /Guess/i
+  ]
   
 
   def clickbait_title?
@@ -18,10 +23,5 @@ class Post < ActiveRecord::Base
 
 end
 
-CLICKBAIT_WORDS = [
-    /Won't Believe/i,
-    /Secret/i,
-    /Top [0-9]*/i,
-    /Guess/i
-  ]
+
 
