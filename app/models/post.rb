@@ -8,6 +8,9 @@ class Post < ActiveRecord::Base
   
   
   validates :clickbait_title
+  
+  
+  
 
   def clickbait_title?
     if CLICKBAIT_WORDS.none? { |pat| pat.match title }
