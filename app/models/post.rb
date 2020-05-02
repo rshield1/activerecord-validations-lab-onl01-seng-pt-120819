@@ -9,7 +9,9 @@ class Post < ActiveRecord::Base
   
   validates :clickbait_title
 
-
+  def clickbait_title?
+    if CLICKBAIT_WORDS.none? { |pat| pat.match title }
+      errors.add(:title, "must be clickbait")
 
 end
 
@@ -20,6 +22,3 @@ CLICKBAIT_WORDS = [
     /Guess/i
   ]
 
-  def clickbait_title?
-    if CLICKBAIT_WORDS.none? { |pat| pat.match title }
-      errors.add(:title, "must be clickbait")
